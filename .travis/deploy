@@ -4,15 +4,16 @@ set -e
 set -u
 set -o pipefail
 
-rm --recursive --force build
+npm run build
+
+mkdir gh-pages
 git remote set-branches --add origin gh-pages
 git fetch --all
 git branch gh-pages origin/gh-pages
-git worktree add build gh-pages
-npm install
-npm run build
+git worktree add gh-pages gh-pages
 
-pushd build
+rsync --progress --recursive build/ gh-pages/
+pushd gh-pages
 
 tree .
 git status
