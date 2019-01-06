@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+set -e
+set -u
+set -o pipefail
+
+npm run build
+printf '%s/n' 'Works'
+exit 0
+rm --recursive --force build
+git remote set-branches --add origin gh-pages
+git fetch --all
+git branch gh-pages origin/gh-pages
+git worktree add build gh-pages
+npm install
+npm run build
+tree -I node_modules build
+
+pushd build
+    if git diff-index --quiet HEAD
+    then
+        exit 0
+    fi
+
+    git config user.email "not.a.real.address@example.com"
+    git config user.name "Travis CI"
+    git add --all --no-ignore-removal
+    git commit --message "Automated build" --message "$TRAVIS_COMMIT_RANGE"
+
+    git push "https://$GITHUB_USER:$GITHUB_PASS@github.com/$TRAVIS_REPO_SLUG" gh-pages
+popd

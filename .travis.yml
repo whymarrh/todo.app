@@ -1,0 +1,14 @@
+addons:
+  apt:
+    packages:
+    - tree
+
+branches:
+  only:
+  - master
+
+language: node_js
+node_js:
+- 8
+after_success:
+- .travis/deploy
