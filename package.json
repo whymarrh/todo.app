@@ -1,6 +1,6 @@
 {
   "name": "todo.app",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "A rudimentary to-do app",
   "main": "src/index.js",
   "private": true,
