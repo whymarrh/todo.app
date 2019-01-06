@@ -1,11 +1,12 @@
 import React, {PureComponent} from 'react';
 import DatePicker from 'react-datepicker';
+import DateTime from 'luxon/src/datetime.js'
 
 import 'react-datepicker/dist/react-datepicker.css';
 
 export class NewTodoForm extends PureComponent {
     state = {
-        dueDate: new Date(),
+        dueDate: DateTime.local().plus({days: 1}).toJSDate(),
     };
 
     onSubmit = (e) => {
