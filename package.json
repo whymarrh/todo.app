@@ -1,0 +1,16 @@
+{
+  "name": "todo.app",
+  "version": "0.0.0",
+  "description": "A rudimentary to-do app",
+  "main": "src/index.js",
+  "author": "Whymarrh Whitby <whymarrh.whitby@gmail.com>",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/whymarrh/todo.app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/whymarrh/todo.app/issues"
+  },
+  "homepage": "https://github.com/whymarrh/todo.app#readme"
+}
