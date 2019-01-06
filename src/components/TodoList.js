@@ -9,15 +9,12 @@ export class TodoList extends PureComponent {
             <ul>
                 {items.map((item, idx) => (
                     <li key={idx}>
-                        {
-                            item.completed()
-                                ? (
-                                    <input type="checkbox" checked disabled />
-                                )
-                                : (
-                                    <input type="checkbox" onClick={() => completeTodo(idx)} />
-                                )
-                        }
+                        <input
+                            type="checkbox"
+                            defaultChecked={item.completed()}
+                            disabled={item.completed()}
+                            onClick={() => completeTodo(idx)}
+                        />
                         &nbsp;
                         <button onClick={() => deleteTodo(idx)}>🗑</button>
                         &nbsp;
