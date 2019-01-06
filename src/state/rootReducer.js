@@ -4,8 +4,8 @@ import {Todo} from './models/todo';
 export function rootReducer(state = [], action) {
     switch (action.type) {
         case ADD_TODO:
-            const {name} = action.payload;
-            return [...state, new Todo(name)];
+            const {title, desc, dueDate, status} = action.payload;
+            return [...state, new Todo(title, desc, dueDate, status)];
 
         case COMPLETE_TODO: {
             const {index} = action.payload;

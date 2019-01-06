@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import DateTime from 'luxon/src/datetime.js'
 
 export class TodoList extends PureComponent {
     render() {
@@ -17,7 +18,14 @@ export class TodoList extends PureComponent {
                                     <input type="checkbox" onClick={() => completeTodo(idx)} />
                                 )
                         }
-                        <button onClick={() => deleteTodo(idx)}>🗑</button> {item.name()}
+                        &nbsp;
+                        <button onClick={() => deleteTodo(idx)}>🗑</button>
+                        &nbsp;
+                        <strong>{item.title}</strong>
+                        &nbsp;
+                        {item.description}
+                        &nbsp;
+                        <span>{DateTime.fromJSDate(item.dueDate).diffNow().toFormat('d')} days</span>
                     </li>
                 ))}
             </ul>
