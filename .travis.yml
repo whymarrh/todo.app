@@ -3,6 +3,8 @@ addons:
     packages:
     - tree
 
+notifications:
+  email: false
 branches:
   only:
   - master
