@@ -4,9 +4,6 @@ set -e
 set -u
 set -o pipefail
 
-npm run build
-printf '%s/n' 'Works'
-exit 0
 rm --recursive --force build
 git remote set-branches --add origin gh-pages
 git fetch --all
