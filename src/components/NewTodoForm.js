@@ -34,7 +34,7 @@ export class NewTodoForm extends PureComponent {
     render() {
         const {dueDate} = this.state;
         return (
-            <form onSubmit={this.onSubmit}>
+            <form className="entry-form" onSubmit={this.onSubmit}>
                 <input
                     type="text"
                     name="title"

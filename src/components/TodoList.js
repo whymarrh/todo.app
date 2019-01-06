@@ -8,21 +8,22 @@ export class TodoList extends PureComponent {
         return (
             <ul>
                 {items.map((item, idx) => (
-                    <li key={idx}>
-                        <input
-                            type="checkbox"
-                            defaultChecked={item.completed()}
-                            disabled={item.completed()}
-                            onClick={() => completeTodo(idx)}
-                        />
-                        &nbsp;
-                        <button onClick={() => deleteTodo(idx)}>🗑</button>
-                        &nbsp;
-                        <strong>{item.title}</strong>
-                        &nbsp;
-                        {item.description}
-                        &nbsp;
-                        <span>{DateTime.fromJSDate(item.dueDate).diffNow().toFormat('d')} days</span>
+                    <li className="to-do" key={idx}>
+                        <span className="to-do__content">
+                            <input
+                                type="checkbox"
+                                defaultChecked={item.completed()}
+                                disabled={item.completed()}
+                                onClick={() => completeTodo(idx)}
+                            />
+                            &nbsp;
+                            <button onClick={() => deleteTodo(idx)}>🗑</button>
+                            &nbsp;
+                            <span className="title">{item.title}</span>
+                            &nbsp;
+                            <span className="description">{item.description}</span>
+                        </span>
+                        <span className="to-do__due-date">{DateTime.fromJSDate(item.dueDate).diffNow().toFormat('d')} days</span>
                     </li>
                 ))}
             </ul>
