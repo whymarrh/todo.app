@@ -11,13 +11,15 @@ git branch gh-pages origin/gh-pages
 git worktree add build gh-pages
 npm install
 npm run build
-tree -I node_modules build
 
 pushd build
 
+tree .
+git status
+
 git config user.email "not.a.real.address@example.com"
 git config user.name "Travis CI"
-git add --all --no-ignore-removal
+git add --all --no-ignore-removal .
 if git commit --message "Automated build" --message "$TRAVIS_COMMIT_RANGE"
 then
     git push "https://$GITHUB_USER:$GITHUB_PASS@github.com/$TRAVIS_REPO_SLUG" gh-pages
